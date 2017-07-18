@@ -16,7 +16,7 @@ const format = morganjson({
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static('public'));
+app.use(express.static('/public'));
 app.use(morgan(format));
 
 let router = express.Router();
@@ -31,4 +31,14 @@ const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log('Server running on port '+port+'!');
+});
+
+// Código agregado para el proyecto final sprint 5
+
+app.use('/api', express.static(__dirname + '/api'));
+app.use('/static', express.static(__dirname + '/node_modules'));
+app.use('/static', express.static(__dirname + '/assets'));
+
+app.get('/', function (require, response) {
+	response.sendFile(__dirname + '/index.html');
 });
