@@ -38,6 +38,7 @@ app.listen(port, () => {
 app.use('/api', express.static(__dirname + '/api'));
 app.use('/static', express.static(__dirname + '/node_modules'));
 app.use('/static', express.static(__dirname + '/assets'));
+app.use('/static', express.static(__dirname + '/views'));
 
 app.get('/', function (require, response) {
 	response.sendFile(__dirname + '/index.html');

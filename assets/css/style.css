@@ -1,3 +1,22 @@
 .carousel{
-	/*margin-top: 20%;*/
+	margin-top: 10%;
+}
+
+#contenedorCarusel{
+	/* Se colocó !important ya que de ninguna otra forma
+	respetaba el alto del carusel (le pregunté a Ado y estuvo
+	de acuerdo conmigo)*/
+	height: 380px !important;
+}
+
+.carousel .indicators .indicator-item.active{
+	background-color: #f64552;
+}
+
+.carousel .indicators .indicator-item{
+	background-color: rgba(128, 128, 128, 0.7);
+}
+
+.boton{
+	background-color: #fbd43b;
 }
