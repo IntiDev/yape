@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 	<head>
 		<!--Import Google Icon Font-->
 	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -8,17 +8,17 @@
 		<!--Let browser know website is optimized for mobile-->
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<meta charset="utf-8">
-		<title> Validación Número</title>
+		<title> Ingresar Código</title>
 		<link rel="stylesheet" href="../static/css/style.css">
 	</head>
 	<body>
 		<!-- PORTADA  -->
 		<section class="container">
 			<div class="row mt-10">
-				<img class="responsive-img offset-s4 col s4" src="../static/img/icons/phone.png" alt="" >
+				<img class="responsive-img offset-s4 col s4" src="../static/img/icons/message.png" alt="mensaje" >
 			</div>
-			<h5 class="offset-s1 col s10 center"> Para comenzar validemos tu número</h5>
-			<p class="grey-text offset-s1 col s10 center"> Recibirá un SMS con un código de validación</p>
+			<h5 class="offset-s1 col s10 center"> Ahora ingresa tu código</h5>
+			<p class="grey-text offset-s1 col s10 center"> Enviaremos un SMS con el código de validación al número ----- </p>
 		</section>
 		<!-- FORMULARIO -->
 		<form action="#" class="container">
@@ -26,23 +26,24 @@
 			<section class="input-field row">
 				<div class="offset-s1 col s10">
 				  <!-- <i class="material-icons prefix grey-text">stay_current_portrait</i> -->
-				  <div class="col s4">
-				  	<img class="responsive-img" src="../static/img/icons/phoneandnumber.png" alt="">
+				  <div class="col s2">
+					<img class="responsive-img" src="../static/img/icons/lock.png" alt="">
 				  </div>
-				  <input id="inputTel" type="tel" class="validate col s8">
+				  <input id="inputCodigo" type="number" class="validate col s8">
 			  </div>
-	        </section>
-			<section class="row">
-				<p class="offset-s1 col s10">
-				  <input type="checkbox" id="checkTerminos"/>
-				  <label for="checkTerminos">Acepto los <a href="#" class="condiciones"> términos y condiciones. </a></label>
-				</p>
 			</section>
-			<div class="row">
-				<a href="" class="btn waves-effect white-text offset-s4 col s4 boton disabled continuar"> CONTINUAR </a>
-			</div>
+			<section class="row center">
+				<span class="grey-text">
+					Reintentar en
+					<!-- <div class="">
+						<img class="reponsive-img" src="../static/img/icons/clock.png" alt="clock">
+					</div> -->
+					<i class="tiny material-icons">schedule</i>
+					--
+				</span>
+			</section>
 		</form>
-		<a href="ingresaCodigo.html" class="btn waves-effect white-text offset-s4 col s4 boton"> Siguiente</a>
+		<a href="crearUsuario.html" class="btn waves-effect white-text offset-s4 col s4 boton"> Siguiente</a>
 		<!--Scripts-->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="../static/js/materialize.js"></script>

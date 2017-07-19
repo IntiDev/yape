@@ -17,12 +17,8 @@ getJSON("api/users.js")
 .then(function (datos) {
 	console.log(datos);
 	return getJSON(dato);
-})
-.then(function (datosReturn) {
-	datosReturn.forEach(function (algo) {
-		objectToDom(algo);
-	})
 });
+
 
 // function objectToDom(algo) {
 // 	var div = document.createElement('div');
@@ -31,15 +27,18 @@ getJSON("api/users.js")
 
 // **** FUNCIONES ***
 function ValidacionNumero() {
-	var $terminos = $('#terminos').prop("checked");
+	// var $terminos = $('#terminos').prop("checked");
+	// console.log($terminos.prop);
 
-	console.log($terminos.prop);
+	// var $validar = $('.validacion').change(function () {
+	// 	console.log("He cambiado");
+	// });
+	//
+	// var btnContinuar = $('.continuar');
 
-	var $validar = $('.validacion').change(function () {
-		console.log("He cambiado");
-	});
-
-	var btnContinuar = $('.continuar');
+	var $input = $('#inputTel').length;
+	console.log($input);
+	var $chek = $('#checkTerminos');
 }
 
 function cargarFunciones() {
