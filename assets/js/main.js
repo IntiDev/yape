@@ -9,9 +9,6 @@ function getJSON(url) {
 		ajax.open("GET", url),
 		ajax.send();
 		ajax.onreadystatechange = function () {
-			if (ajax.readyState == 4) {
-				// resolve(JSON.parse(ajax.responseText));
-			}
 		}
 	});
 }
@@ -31,10 +28,24 @@ getJSON("api/users.js")
 // 	var div = document.createElement('div');
 // 	div.innerText
 // }
+
 // **** FUNCIONES ***
+function ValidacionNumero() {
+	var $terminos = $('#terminos').prop("checked");
+
+	console.log($terminos.prop);
+
+	var $validar = $('.validacion').change(function () {
+		console.log("He cambiado");
+	});
+
+	var btnContinuar = $('.continuar');
+}
 
 function cargarFunciones() {
 	 $('.carousel.carousel-slider').carousel({fullWidth: true});
+	 $('select').material_select();
+	 ValidacionNumero();
 }
 
 

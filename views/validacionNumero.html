@@ -11,9 +11,34 @@
 		<title> Validación Número</title>
 		<link rel="stylesheet" href="../static/css/style.css">
 	</head>
-	<body class="grey lighten-2">
-		<h1> Quiubo </h1>
-
+	<body>
+		<!-- PORTADA  -->
+		<section class="container">
+			<div class="row mt-10">
+				<img class="responsive-img offset-s4 col s4" src="../static/img/icons/phone.png" alt="" >
+			</div>
+			<h5 class="offset-s1 col s10 center"> Para comenzar validemos tu número</h5>
+			<p class="grey-text offset-s1 col s10 center"> Recibirá un SMS con un código de validación</p>
+		</section>
+		<!-- FORMULARIO -->
+		<form action="#" class="container">
+			<br>
+			<section class="input-field row">
+				<div class="offset-s1 col s10">
+				  <i class="material-icons prefix grey-text">stay_current_portrait</i>
+	  	          <input id="icon_telephone" type="tel" class="validate validacion" placeholder="(+52)">
+				</div>
+	        </section>
+			<section class="row">
+				<p class="offset-s1 col s10">
+				  <input type="checkbox" id="terminos" checked="checked" />
+				  <label for="terminos">Acepto los <a href="#" class="condiciones validacion"> términos y condiciones. </a></label>
+				</p>
+			</section>
+			<div class="row">
+				<a href="" class="btn waves-effect white-text offset-s4 col s4 boton disabled continuar"> CONTINUAR </a>
+			</div>
+		</form>
 		<!--Scripts-->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="../static/js/materialize.js"></script>

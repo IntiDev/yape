@@ -1,7 +1,9 @@
-.carousel{
+/* Estilos generales*/
+.mt-10{
 	margin-top: 10%;
 }
 
+/*Estilos index.html*/
 #contenedorCarusel{
 	/* Se colocó !important ya que de ninguna otra forma
 	respetaba el alto del carusel (le pregunté a Ado y estuvo
@@ -19,4 +21,9 @@
 
 .boton{
 	background-color: #fbd43b;
+}
+
+/* Estilos vista ValidacionNUmero.html*/
+.condiciones{
+	color: #00c3a3;
 }
