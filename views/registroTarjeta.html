@@ -11,8 +11,46 @@
 		<title> Registro Tarjeta</title>
 		<link rel="stylesheet" href="../static/css/style.css">
 	</head>
-	<body class="grey">
-			<h4> Hola 4</h4>
+	<body>
+			<!-- PORTADA  -->
+			<section class="container">
+				<div class="row mt-5">
+					<!-- <img class="responsive-img col s2" src="../static/img/icons/question.png" alt=""> -->
+					<img class="responsive-img offset-s10 col s2" src="../static/img/icons/question.png" alt="">
+				</div>
+				<div class="row mt-10">
+					<img class="responsive-img offset-s4 col s4" src="../static/img/icons/bcp-logo.png" alt="mensaje" >
+				</div>
+				<h5 class="offset-s1 col s10 center"> Registra tu tarjeta de débito BCP</h5>
+				<p class="grey-text offset-s2 col s8 center"> Por ahora solo aceptamos cuentas de ahorro y/o corriente en soles.</p>
+			</section>
+			<!-- FORMULARIO -->
+			<form action="#" class="container">
+				<br>
+				<section class="input-field row">
+					<div class="offset-s1 col s10">
+					  <div class="col s2">
+							<img class="responsive-img" src="../static/img/icons/card.png" alt="">
+					  </div>
+					  <input id="inputTarjeta" type="number" class="validate col s9 center">
+				  </div>
+				</section>
+				<section class="row center">
+						<div class="row">
+							<img class="reponsive-img offset-s3 col s1" src="../static/img/icons/scan.png" alt="clock">
+							<h6 class="col s5 condiciones"> Escanear tarjeta </h6>
+						</div>
+				</section>
+				<section class="row center">
+					<span class="grey-text col s6">
+						Fecha de vencimiento
+					</span>
+					<input class="col s4" type="date" placeholder="Mes / Año">
+				</section>
+				<div class="row">
+					<a href="" class="btn waves-effect offset-s4 col s4 bck-Yellow disabled"> CONTINUAR </a>
+				</div>
+			</form>
 			<a href="ingresarClave.html" class="btn waves-effect white-text offset-s4 col s4 boton"> Siguiente</a>
 		<!--Scripts-->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

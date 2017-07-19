@@ -1,8 +1,35 @@
 /* Estilos generales*/
+.mt-5{
+	margin-top: 5%;
+}
 .mt-10{
 	margin-top: 10%;
 }
 
+.mt-40{
+	margin-top: 40%;
+}
+
+/*COLORES*/
+.bck-Yellow{
+	background-color: #fbd43b;
+}
+
+.condiciones{
+	color: #00c3a3;
+}
+
+.purple{
+	color: #49233b;
+}
+
+.purple-light{
+	background-color: #451e36;
+}
+
+.purple-dark{
+	background-color: #38052a;
+}
 /*Estilos index.html*/
 #contenedorCarusel{
 	/* Se colocó !important ya que de ninguna otra forma
@@ -17,13 +44,4 @@
 
 .carousel .indicators .indicator-item{
 	background-color: rgba(128, 128, 128, 0.7);
-}
-
-.boton{
-	background-color: #fbd43b;
-}
-
-/* Estilos vista ValidacionNUmero.html*/
-.condiciones{
-	color: #00c3a3;
 }
