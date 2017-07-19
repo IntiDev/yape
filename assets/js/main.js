@@ -13,38 +13,41 @@ function getJSON(url) {
 	});
 }
 
-getJSON("api/users.js")
-.then(function (datos) {
-	console.log(datos);
-	return getJSON(dato);
-});
-
-
-// function objectToDom(algo) {
-// 	var div = document.createElement('div');
-// 	div.innerText
-// }
+getJSON("http://localhost:3000/api/registerNumber");
 
 // **** FUNCIONES ***
-function ValidacionNumero() {
-	// var $terminos = $('#terminos').prop("checked");
-	// console.log($terminos.prop);
-
-	// var $validar = $('.validacion').change(function () {
-	// 	console.log("He cambiado");
-	// });
-	//
-	// var btnContinuar = $('.continuar');
-
-	var $input = $('#inputTel').length;
+function verificarLongNum() {
+	var $input = $('#inputTel').val().length;
 	console.log($input);
-	var $chek = $('#checkTerminos');
+	return $input == 10;
+}
+
+function verificarCheckbox() {
+	var $check = $('#checkTerminos');
+	console.log($check.is(':checked'));
+	return $check.is(':checked');
+}
+
+function habilitarBtn() {
+	var $btn = $('#btnContinuar');
+
+	if(verificarLongNum() && verificarCheckbox()){
+		$btn.removeClass('disabled');
+	}
+	else{
+		$btn.addClass('disabled');
+	}
+}
+
+function validacion() {
+	$('#inputTel').on('change', habilitarBtn);
+	$('#checkTerminos').change(habilitarBtn);
 }
 
 function cargarFunciones() {
 	 $('.carousel.carousel-slider').carousel({fullWidth: true});
 	 $('select').material_select();
-	 ValidacionNumero();
+	 validacion();
 }
 
 
