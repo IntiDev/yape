@@ -8,25 +8,33 @@ var codigoGenerado = 0;
 var $nombre = $('#nombre');
 var $correo = $('#correo');
 var $clave = $('#inputClave');
+var $btnCuenta = $('#btnCuenta');
 
 // **** FUNCIONES ****
 
 function almacenar() {
 	console.log($input.val());
-	console.log(codigoGenerado);
+	// console.log(codigoGenerado);
 	localStorage.setItem("id", $input.val());
-	localStorage.setItem("code", codigoGenerado);
+	// localStorage.setItem("code", codigoGenerado);
 }
 
+function almacenarDatosUsuario() {
+	localStorage.setItem('nombre', $nombre.val());
+	localStorage.setItem('correo', $correo.val());
+	localStorage.setItem('password', $clave.val());
+
+	enviarDatos();
+}
 function cargarSigPantalla() {
-	setInterval($(location).attr('href', 'registroTarjeta.html'), 4000);
+	setTimeout($(location).attr('href', 'registroTarjeta.html'), 8000);
 }
 
 function leerDatos() {
 	// console.log(localStorage.getItem("id"));
 	$txtNum.append("<b>" + localStorage.getItem("id") + "</b>");
 	timer();
-	setInterval(alert("Tu código de verificación es: " + localStorage.getItem("code"), 2000));
+	setTimeout(alert("Tu código de verificación es: " + localStorage.getItem("code"), 2000));
 	$inputCodigo.on("keyup", verificarCodigo);
 }
 
@@ -38,13 +46,13 @@ function verificarFormulario() {
 }
 
 function datosUsuario() {
-	var $btnCuenta = $('#btnCuenta');
 	if($nombre.val(), $correo.val(), $clave.val() != ""){
-		if ($clave.val().length == 6 && $clave.val() == localStorage.getItem("code") ) {
+		if ($clave.val().length == 6 ) {
 			$btnCuenta.removeClass('disabled');
+			$btnCuenta.on('change', almacenarDatosUsuario);
 		}
 		else{
-			alert("Código incorrecto :(")
+			alert("Tu contraseña debe contener 6 dígitos ");
 		}
 	}
 	else{
@@ -54,21 +62,25 @@ function datosUsuario() {
 }
 
 function verificarCodigo() {
-	// console.log($inputCodigo.val());
 	if($inputCodigo.val().length == 6 && $inputCodigo.val() == localStorage.getItem("code")){
 		console.log("Código aceptado");
 		$(location).attr('href', 'crearUsuario.html');
 	}
 }
+
 function timer() {
 	var segundos = 20;
 	var temporizador = setInterval(function(){
 		if(segundos == 0){
 			clearInterval(temporizador);
 			alert("Inténtalo nuevamente");
-			// timer();
 			$inputCodigo.val("");
-		}
+			// localStorage.setItem("code", " ");
+			validarCodigo();
+			setTimeout(function () {
+				alert("Tu nuevo código de verificación es: " + localStorage.getItem("code"));
+			}, 1000);
+			}
 		$("#temporizador").text(segundos--);
 	}, 1000);
 }
@@ -93,10 +105,12 @@ function habilitarBtnContinuar() {
 	var $btn = $('#btnContinuar');
 	if(verificarLongNum($input) && verificarCheckbox($check)){
 		$btn.removeClass('disabled');
+		almacenar();
 		generarCodigo();
-		validarCodigo();
+		console.log("->" + localStorage.getItem('id'));
+		// validarCodigo();
 		$btn.click(function () {
-			almacenar();
+			validarCodigo();
 			$input.val("");
 			$check.removeAttr("checked");
 		});
@@ -128,7 +142,7 @@ var url = {
 
 function generarCodigo() {
 	$.post(url.regNum,{
-		"phone": $input.val(),
+		"phone": localStorage.getItem("id"),
 		"terms": 'true'
 	}).then(function (response) {
 		console.log(response);
@@ -140,11 +154,26 @@ function generarCodigo() {
 
 function validarCodigo(){
 	$.post(url.resendCode,{
-		"phone": $input.val()
+		"phone": localStorage.getItem('id')
 	}).then(function (response) {
 		console.log(response);
-		console.log(response.data);
 		codigoGenerado = response.data;
+		console.log(codigoGenerado);
+		localStorage.setItem("code", codigoGenerado);
+		return codigoGenerado;
+	}).then(function () {
+	// alert("Tu nuevo código de verificación es: " + localStorage.getItem("code"));
+	});
+}
+
+function enviarDatos() {
+	$.post(url.createUser,{
+		'phone': localStorage.getItem("id"),
+		'name': localStorage.getItem('nombre'),
+		'email': localStorage.getItem('correo'),
+		'password': localStorage.getItem('password')
+	}).then(function (response) {
+		console.log(response);
 	});
 }
 
