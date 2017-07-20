@@ -11,14 +11,14 @@
 		<title> Ingresar Código</title>
 		<link rel="stylesheet" href="../static/css/style.css">
 	</head>
-	<body>
+	<body onload="leerDatos()">
 		<!-- PORTADA  -->
 		<section class="container">
 			<div class="row mt-10">
 				<img class="responsive-img offset-s4 col s4" src="../static/img/icons/message.png" alt="mensaje" >
 			</div>
 			<h5 class="offset-s1 col s10 center"> Ahora ingresa tu código</h5>
-			<p class="grey-text offset-s1 col s10 center"> Enviaremos un SMS con el código de validación al número ----- </p>
+			<p id="textoNumero" class="grey-text offset-s1 col s10 center"> Enviaremos un SMS con el código de validación al número </p>
 		</section>
 		<!-- FORMULARIO -->
 		<form action="#" class="container">
@@ -39,7 +39,7 @@
 						<img class="reponsive-img" src="../static/img/icons/clock.png" alt="clock">
 					</div> -->
 					<i class="tiny material-icons">schedule</i>
-					--
+					<span id="temporizador"></span>
 				</span>
 			</section>
 		</form>
