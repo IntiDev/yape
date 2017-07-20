@@ -5,6 +5,9 @@ var $check = $('#checkTerminos');
 var $txtNum = $('#textoNumero');
 var $inputCodigo = $('#inputValidarCodigo');
 var codigoGenerado = 0;
+var $nombre = $('#nombre');
+var $correo = $('#correo');
+var $clave = $('#inputClave');
 
 // **** FUNCIONES ****
 
@@ -15,12 +18,39 @@ function almacenar() {
 	localStorage.setItem("code", codigoGenerado);
 }
 
+function cargarSigPantalla() {
+	setInterval($(location).attr('href', 'registroTarjeta.html'), 4000);
+}
+
 function leerDatos() {
 	// console.log(localStorage.getItem("id"));
 	$txtNum.append("<b>" + localStorage.getItem("id") + "</b>");
 	timer();
 	setInterval(alert("Tu código de verificación es: " + localStorage.getItem("code"), 2000));
 	$inputCodigo.on("keyup", verificarCodigo);
+}
+
+function verificarFormulario() {
+	console.log("Hola Usuario");
+	$nombre.on('change', datosUsuario);
+	$correo.on('change', datosUsuario);
+	$clave.on('change', datosUsuario);
+}
+
+function datosUsuario() {
+	var $btnCuenta = $('#btnCuenta');
+	if($nombre.val(), $correo.val(), $clave.val() != ""){
+		if ($clave.val().length == 6 && $clave.val() == localStorage.getItem("code") ) {
+			$btnCuenta.removeClass('disabled');
+		}
+		else{
+			alert("Código incorrecto :(")
+		}
+	}
+	else{
+		$btnCuenta.addClass('disabled');
+	}
+
 }
 
 function verificarCodigo() {
@@ -49,7 +79,7 @@ function verificarLongNum($input) {
 		return true;
 	}
 	else{
-		alert("Número no valido");
+		alert("Número no válido");
 		return false;
 	}
 }
@@ -59,7 +89,7 @@ function verificarCheckbox($check) {
 	return habilitado;
 }
 
-function habilitarBtn() {
+function habilitarBtnContinuar() {
 	var $btn = $('#btnContinuar');
 	if(verificarLongNum($input) && verificarCheckbox($check)){
 		$btn.removeClass('disabled');
@@ -77,8 +107,8 @@ function habilitarBtn() {
 }
 
 function validacionItems() {
-	$('#inputTel').on('change', habilitarBtn);
-	$('#checkTerminos').change(habilitarBtn);
+	$('#inputTel').on('change', habilitarBtnContinuar);
+	$('#checkTerminos').change(habilitarBtnContinuar);
 }
 
 function cargarFunciones() {
