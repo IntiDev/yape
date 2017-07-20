@@ -3,6 +3,7 @@
 var $input = $('#inputTel');
 var $check = $('#checkTerminos');
 var $txtNum = $('#textoNumero');
+var $inputCodigo = $('#inputValidarCodigo');
 var codigoGenerado = 0;
 
 // **** FUNCIONES ****
@@ -15,12 +16,28 @@ function almacenar() {
 }
 
 function leerDatos() {
-	console.log(localStorage.getItem("id"));
+	// console.log(localStorage.getItem("id"));
 	$txtNum.append("<b>" + localStorage.getItem("id") + "</b>");
+	timer();
+	setInterval(alert("Tu código de verificación es: " + localStorage.getItem("code"), 2000));
+	$inputCodigo.on("keyup", verificarCodigo);
+}
+
+function verificarCodigo() {
+	// console.log($inputCodigo.val());
+	if($inputCodigo.val().length == 6 && $inputCodigo.val() == localStorage.getItem("code")){
+		console.log("Código aceptado");
+		$(location).attr('href', 'crearUsuario.html');
+	}
+}
+function timer() {
 	var segundos = 20;
 	var temporizador = setInterval(function(){
 		if(segundos == 0){
 			clearInterval(temporizador);
+			alert("Inténtalo nuevamente");
+			// timer();
+			$inputCodigo.val("");
 		}
 		$("#temporizador").text(segundos--);
 	}, 1000);
