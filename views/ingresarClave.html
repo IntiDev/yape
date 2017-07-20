@@ -8,16 +8,21 @@
 		<!--Let browser know website is optimized for mobile-->
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<meta charset="utf-8">
-		<title> Ingresar Clave</title>
+		<title> Ingresar Clave </title>
 		<link rel="stylesheet" href="../static/css/style.css">
 	</head>
-	<body>
+	<body onload="checarCodigoSeg()">
 		<!-- PORTADA  -->
 		<section class="container">
 			<div class="row mt-5">
 				<!-- <img class="responsive-img col s2" src="../static/img/icons/question.png" alt=""> -->
-				<h5 class="col s2"> Volver </h5>
-				<img class="responsive-img offset-s8 col s2" src="../static/img/icons/question.png" alt="">
+				<h5 class="col s5 purple-light">
+					<a href="registroTarjeta.html" class="morado">
+						<i class="material-icons">chevron_left</i>
+						Volver
+					</a>
+				</h5>
+				<img class="responsive-img offset-s5 col s2 pointer" src="../static/img/icons/question.png" alt="">
 			</div>
 			<div class="row mt-10">
 				<img class="responsive-img offset-s4 col s4" src="../static/img/icons/bcp-logo.png" alt="mensaje" >
@@ -33,15 +38,13 @@
 					<div class="col s2">
 						<img class="responsive-img" src="../static/img/icons/card.png" alt="">
 					</div>
-					<input id="inputClaveTarjeta type="password" class="validate col s9 center">
+					<input id="inputClaveTarjeta" type="password" class="validate col s9 center">
 				</div>
 			</section>
 			<div class="row">
-				<a href="" class="btn waves-effect offset-s4 col s4 bck-Yellow disabled"> REGISTRAR </a>
+				<a id="regClave" href="perfilUsuario.html" class="btn waves-effect offset-s4 col s4 bck-Yellow disabled"> REGISTRAR </a>
 			</div>
 		</form>
-
-			<a href="perfilUsuario.html" class="btn waves-effect white-text offset-s4 col s4 boton"> Siguiente</a>
 		<!--Scripts-->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="../static/js/materialize.js"></script>

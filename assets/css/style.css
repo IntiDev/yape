@@ -19,7 +19,7 @@
 	color: #00c3a3;
 }
 
-.purple{
+.morado{
 	color: #49233b;
 }
 
@@ -34,7 +34,7 @@
 #contenedorCarusel{
 	/* Se colocó !important ya que de ninguna otra forma
 	respetaba el alto del carusel (le pregunté a Ado y estuvo
-	de acuerdo conmigo)*/
+	de acuerdo SALUDOS)*/
 	height: 380px !important;
 }
 
@@ -44,4 +44,8 @@
 
 .carousel .indicators .indicator-item{
 	background-color: rgba(128, 128, 128, 0.7);
+}
+
+.pointer{
+	cursor: pointer;
 }

@@ -6,11 +6,80 @@ var $txtNum = $('#textoNumero');
 var $inputCodigo = $('#inputValidarCodigo');
 var codigoGenerado = 0;
 var $nombre = $('#nombre');
+
 var $correo = $('#correo');
 var $clave = $('#inputClave');
 var $btnCuenta = $('#btnCuenta');
 
+var $numTarjeta = $('#inputTarjeta');
+var $mes = $('#inputMes');
+var $anio = $('#inputAnio');
+var $btnCard = $('#btnTarjeta')
+var $claveTarjeta = $('#inputClaveTarjeta');
+var $btnRegClave = $('#regClave');
 // **** FUNCIONES ****
+
+function cargarDatosTarjeta() {
+	console.log('Tarjetas Bienvenidas');
+	$numTarjeta.on('change', verificarDatosTarjeta);
+	$mes.on('change', verificarDatosTarjeta);
+	$anio.on('change', verificarDatosTarjeta);
+}
+
+function verificarDatosTarjeta() {
+	verificarNumTarjeta();
+	// verificarMes();
+	// verificarAnio();
+	if($numTarjeta.val().length == 16 && $mes.val().length, $anio.val().length != 0 ){
+		$numTarjeta.addClass('disabled');
+		console.log('Datos llenos');
+		guardarDatosTarjeta()
+		$btnCard.removeClass('disabled');
+	}
+	else{
+		$btnCard.addClass('disabled');
+	}
+}
+
+function verificarNumTarjeta() {
+	if( $numTarjeta.val().length == 16){
+		console.log("Tarjeta válida");
+		return true
+	}
+	else{
+		alert("Número de tarjeta INCORRECTO");
+	}
+}
+
+function checarCodigoSeg() {
+	$claveTarjeta.on('change', guardarClaveTarjeta);
+}
+
+function guardarDatosTarjeta() {
+	localStorage.setItem('numTarjeta', $numTarjeta.val());
+	localStorage.setItem('mes', $mes.val());//--> CHECAR
+	localStorage.setItem('anio', $anio.val());
+}
+
+function guardarClaveTarjeta() {
+	if($claveTarjeta.val().length != 0 && $claveTarjeta.val().length  == 4){
+		console.log('Clave válida');
+		$btnRegClave.removeClass('disabled');
+
+	}
+	else{
+		console.log('Algo salió mal :X');
+		$btnRegClave.addClass('disabled');
+	}
+}
+
+function verificarMes() {
+
+}
+
+function verificarAnio() {
+
+}
 
 function almacenar() {
 	console.log($input.val());
@@ -19,13 +88,6 @@ function almacenar() {
 	// localStorage.setItem("code", codigoGenerado);
 }
 
-function almacenarDatosUsuario() {
-	localStorage.setItem('nombre', $nombre.val());
-	localStorage.setItem('correo', $correo.val());
-	localStorage.setItem('password', $clave.val());
-
-	enviarDatos();
-}
 function cargarSigPantalla() {
 	setTimeout($(location).attr('href', 'registroTarjeta.html'), 8000);
 }
@@ -48,8 +110,9 @@ function verificarFormulario() {
 function datosUsuario() {
 	if($nombre.val(), $correo.val(), $clave.val() != ""){
 		if ($clave.val().length == 6 ) {
+			almacenarDatosUsuario();
 			$btnCuenta.removeClass('disabled');
-			$btnCuenta.on('change', almacenarDatosUsuario);
+			// $btnCuenta.on('change', almacenarDatosUsuario);
 		}
 		else{
 			alert("Tu contraseña debe contener 6 dígitos ");
@@ -59,6 +122,14 @@ function datosUsuario() {
 		$btnCuenta.addClass('disabled');
 	}
 
+}
+
+function almacenarDatosUsuario() {
+	localStorage.setItem('nombre', $nombre.val());
+	localStorage.setItem('correo', $correo.val());
+	localStorage.setItem('password', $clave.val());
+
+	enviarDatos();
 }
 
 function verificarCodigo() {
@@ -85,9 +156,10 @@ function timer() {
 	}, 1000);
 }
 
+
 function verificarLongNum($input) {
 	// console.log($input);
-	if(/^([0-9])*$/.test($input.val()) && $input.val().length == 10){
+	if( /^([0-9])*$/.test($input.val()) && $input.val().length == 10){
 		return true;
 	}
 	else{
@@ -172,6 +244,18 @@ function enviarDatos() {
 		'name': localStorage.getItem('nombre'),
 		'email': localStorage.getItem('correo'),
 		'password': localStorage.getItem('password')
+	}).then(function (response) {
+		console.log(response);
+	});
+}
+
+function registrarTarjeta() {
+	$.post(url.regCard,{
+		'phone': localStorage.getItem("id"),
+		'cardNumber': localStorage.getItem('numTarjeta'),
+		'cardMonth': localStorage.getItem('mes'),
+		'cardYear': localStorage.getItem('anio'),
+		'cardPassword': localStorage.getItem('passwordTarjeta')
 	}).then(function (response) {
 		console.log(response);
 	});

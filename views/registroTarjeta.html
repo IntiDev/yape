@@ -11,7 +11,7 @@
 		<title> Registro Tarjeta</title>
 		<link rel="stylesheet" href="../static/css/style.css">
 	</head>
-	<body>
+	<body onload="cargarDatosTarjeta()">
 			<!-- PORTADA  -->
 			<section class="container">
 				<div class="row mt-5">
@@ -45,13 +45,14 @@
 					<span class="grey-text col s6">
 						Fecha de vencimiento
 					</span>
-					<input class="col s4" type="date" placeholder="Mes / Año">
+					<input id="inputMes" class="col s2 center" type="number" placeholder="Mes">
+					<span class="col s1"> / </span>
+					<input id="inputAnio" class="col s2 center" type="number" placeholder="Año">
 				</section>
 				<div class="row">
-					<a href="" class="btn waves-effect offset-s4 col s4 bck-Yellow disabled"> CONTINUAR </a>
+					<a id="btnTarjeta" href="ingresarClave.html" class="btn waves-effect offset-s4 col s4 bck-Yellow disabled"> CONTINUAR </a>
 				</div>
 			</form>
-			<a href="ingresarClave.html" class="btn waves-effect white-text offset-s4 col s4 boton"> Siguiente</a>
 		<!--Scripts-->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="../static/js/materialize.js"></script>
