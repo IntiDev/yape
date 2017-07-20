@@ -28,13 +28,12 @@ function cargarDatosTarjeta() {
 
 function verificarDatosTarjeta() {
 	verificarNumTarjeta();
-	// verificarMes();
-	// verificarAnio();
-	if($numTarjeta.val().length == 16 && $mes.val().length, $anio.val().length != 0 ){
+	if($numTarjeta.val().length == 16 && $mes.val().length!= 0 && $anio.val().length != 0 ){
+		verificarMes();
+		verificarAnio();
 		$numTarjeta.addClass('disabled');
 		console.log('Datos llenos');
-		guardarDatosTarjeta()
-		$btnCard.removeClass('disabled');
+		guardarDatosTarjeta();
 	}
 	else{
 		$btnCard.addClass('disabled');
@@ -52,6 +51,7 @@ function verificarNumTarjeta() {
 }
 
 function checarCodigoSeg() {
+	mostrarDigTarjeta();
 	$claveTarjeta.on('change', guardarClaveTarjeta);
 }
 
@@ -59,26 +59,55 @@ function guardarDatosTarjeta() {
 	localStorage.setItem('numTarjeta', $numTarjeta.val());
 	localStorage.setItem('mes', $mes.val());//--> CHECAR
 	localStorage.setItem('anio', $anio.val());
+	console.log("Datos guardados localStorage");
+}
+
+function mostrarDigTarjeta() {
+	var mostrarDig = $('#ver4Dig');
+	var digTarjeta = localStorage.getItem('numTarjeta').toString();
+	var ult4dig = digTarjeta.charAt(12) + digTarjeta.charAt(13) + digTarjeta.charAt(14) + digTarjeta.charAt(15);
+	console.log(ult4dig);
+	mostrarDig.append(ult4dig);
 }
 
 function guardarClaveTarjeta() {
 	if($claveTarjeta.val().length != 0 && $claveTarjeta.val().length  == 4){
 		console.log('Clave válida');
+		localStorage.setItem('passwordTarjeta', $claveTarjeta.val());
+		registrarTarjeta();
 		$btnRegClave.removeClass('disabled');
 
 	}
 	else{
 		console.log('Algo salió mal :X');
+		alert('Ingresa un código de 4 dígitos');
 		$btnRegClave.addClass('disabled');
 	}
 }
 
 function verificarMes() {
-
+	 var mes = parseInt($mes.val());
+	 console.log(mes);
+	 if(mes <= 12){
+		 console.log('Mes válido');
+		 return $mes.val();
+	 }
+	 else {
+	 	alert('Ingresa un mes válido');
+	 }
 }
 
 function verificarAnio() {
-
+	var anio = parseInt($anio.val())
+	if (anio >= 17 && anio <= 24 ) {
+		console.log('Año válido');
+		$btnCard.removeClass('disabled');
+		return $anio.val();
+	}
+	else{
+		alert('Ingresa un año válido')
+		$btnCard.addClass('disabled');
+	}
 }
 
 function almacenar() {
@@ -146,7 +175,6 @@ function timer() {
 			clearInterval(temporizador);
 			alert("Inténtalo nuevamente");
 			$inputCodigo.val("");
-			// localStorage.setItem("code", " ");
 			validarCodigo();
 			setTimeout(function () {
 				alert("Tu nuevo código de verificación es: " + localStorage.getItem("code"));
