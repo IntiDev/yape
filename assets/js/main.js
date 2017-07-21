@@ -46,7 +46,8 @@ function verificarNumTarjeta() {
 		return true
 	}
 	else{
-		alert("Número de tarjeta INCORRECTO");
+		// alert("Número de tarjeta INCORRECTO");
+		Materialize.toast('Número de tarjeta INCORRECTO', 2000);
 	}
 }
 
@@ -80,7 +81,8 @@ function guardarClaveTarjeta() {
 	}
 	else{
 		console.log('Algo salió mal :X');
-		alert('Ingresa un código de 4 dígitos');
+		// alert('Ingresa un código de 4 dígitos');
+		Materialize.toast('Ingresa un código de 4 dígitos', 2000);
 		$btnRegClave.addClass('disabled');
 	}
 }
@@ -93,7 +95,8 @@ function verificarMes() {
 		 return $mes.val();
 	 }
 	 else {
-	 	alert('Ingresa un mes válido');
+		// 	alert('Ingresa un mes válido');
+		Materialize.toast('Ingresa un mes válido', 2000);
 	 }
 }
 
@@ -105,7 +108,8 @@ function verificarAnio() {
 		return $anio.val();
 	}
 	else{
-		alert('Ingresa un año válido')
+		// alert('Ingresa un año válido')
+		Materialize.toast('Ingresa un año válido', 2000);
 		$btnCard.addClass('disabled');
 	}
 }
@@ -125,7 +129,9 @@ function leerDatos() {
 	// console.log(localStorage.getItem("id"));
 	$txtNum.append("<b>" + localStorage.getItem("id") + "</b>");
 	timer();
-	setTimeout(alert("Tu código de verificación es: " + localStorage.getItem("code"), 2000));
+	// setTimeout(alert("Tu código de verificación es: " + localStorage.getItem("code"), 2000));
+	setTimeout(Materialize.toast('Tu código de verificación es: ' + localStorage.getItem("code"), 2000), 2000);
+
 	$inputCodigo.on("keyup", verificarCodigo);
 }
 
@@ -144,7 +150,8 @@ function datosUsuario() {
 			// $btnCuenta.on('change', almacenarDatosUsuario);
 		}
 		else{
-			alert("Tu contraseña debe contener 6 dígitos ");
+			// alert("Tu contraseña debe contener 6 dígitos ");
+			Materialize.toast('Tu contraseña debe contener 6 dígitos', 2000);
 		}
 	}
 	else{
@@ -173,11 +180,13 @@ function timer() {
 	var temporizador = setInterval(function(){
 		if(segundos == 0){
 			clearInterval(temporizador);
-			alert("Inténtalo nuevamente");
+			// alert("Inténtalo nuevamente");
+			Materialize.toast('Inténtalo nuevamente', 2000);
 			$inputCodigo.val("");
 			validarCodigo();
 			setTimeout(function () {
-				alert("Tu nuevo código de verificación es: " + localStorage.getItem("code"));
+				// alert("Tu nuevo código de verificación es: " + localStorage.getItem("code"));
+				Materialize.toast("Tu nuevo código de verificación es: " + localStorage.getItem("code"), 2000);
 			}, 1000);
 			}
 		$("#temporizador").text(segundos--);
@@ -191,7 +200,8 @@ function verificarLongNum($input) {
 		return true;
 	}
 	else{
-		alert("Número no válido");
+		// alert("Número no válido");
+		Materialize.toast('Número no válido', 2000);
 		return false;
 	}
 }
@@ -207,7 +217,7 @@ function habilitarBtnContinuar() {
 		$btn.removeClass('disabled');
 		almacenar();
 		generarCodigo();
-		console.log("->" + localStorage.getItem('id'));
+		// console.log("->" + localStorage.getItem('id'));
 		// validarCodigo();
 		$btn.click(function () {
 			validarCodigo();
